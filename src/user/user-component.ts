@@ -1,4 +1,4 @@
-import { Router } from "express";
+import { Router, Request, Response } from "express";
 import { User } from "./user.model";
 
 const router = Router();
@@ -13,11 +13,13 @@ const createUser = (req: Request , res: Response) =>{
             age: req.body?.age,
             address: req.body?.address 
          }
+
+         users.push(user)
     }
     
 
-    users.push(user)
-    res.status(201).json(user);
+    
+    res.status(201).json(users);
 }
 
 router.post('/', createUser);
